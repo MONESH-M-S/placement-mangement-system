@@ -5,7 +5,84 @@
     </div>
     <div class="buttons">
       <a href="#" class="mr-2 md:mr-5 button">Help</a>
-      <a href="#" class="mr-2 md:mr-5 button">Admin</a>
+      <a (click)="openAdminLoginDialog()" class="mr-2 md:mr-5 button">Admin</a>
     </div>
   </div>
 </header>
+
+<p-dialog
+  header="Admin Login"
+  [(visible)]="openDialog"
+  [modal]="true"
+  [breakpoints]="{ '960px': '75vw' }"
+  [style]="{ width: '40vw' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <div class="text-center">
+    <img width="100" src="assets/unauthorized-person.png" alt="Admin" />
+  </div>
+  <p class="text-center text-base font-semibold text-red-500">
+    ( This dialog is only for Admin Login! )
+  </p>
+  <form class="w-5 m-auto" #form="ngForm" (ngSubmit)="onFormSubmitted(form)">
+    <div class="grid p-fluid">
+      <div class="col-12">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-at"></i></span>
+          <input
+            class="w-4"
+            type="email"
+            name="email"
+            ngModel
+            pInputText
+            placeholder="Admin email"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-eye"></i></span>
+          <input
+            class="w-4"
+            type="password"
+            name="password"
+            ngModel
+            pInputText
+            placeholder="Password"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-12 flex justify-content-center">
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Clear"
+        (click)="form.reset()"
+        class="p-button-raised p-button-danger mr-3"
+        *ngIf="!isLoading"
+      ></button>
+      <button
+        pButton
+        pRipple
+        type="submit"
+        label="Submit"
+        class="p-button-raised p-button-success ml-3"
+        [disabled]="form.invalid"
+        *ngIf="!isLoading"
+      ></button>
+      <p-progressSpinner
+        [style]="{ width: '50px', height: '50px' }"
+        styleClass="custom-spinner"
+        strokeWidth="8"
+        fill="var(--surface-ground)"
+        animationDuration=".5s"
+        *ngIf="isLoading"
+      ></p-progressSpinner>
+    </div>
+  </form>
+</p-dialog>

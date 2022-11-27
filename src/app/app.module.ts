@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { PrimengModule } from './primeng.module';
 import { HeaderComponent } from './header/header.component';
 import { CompanyTableComponent } from './home/company-table/company-table.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { CompanyTableComponent } from './home/company-table/company-table.compon
     HomeComponent,
     HeaderComponent,
     CompanyTableComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +26,8 @@ import { CompanyTableComponent } from './home/company-table/company-table.compon
     AppRoutingModule,
     PrimengModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
