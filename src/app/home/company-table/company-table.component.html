@@ -1,0 +1,63 @@
+<section class="shadow-6">
+  <p-table
+    #dt
+    [value]="companyArray"
+    [lazy]="true"
+    [loading]="isLoading"
+    styleClass="p-datatable-lg p-datatable-gridlines"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [scrollable]="true"
+    [globalFilterFields]="['company_name', 'company_type']"
+    scrollHeight="600px"
+  >
+    <ng-template pTemplate="caption">
+      <div class="flex">
+        <div></div>
+        <span class="p-input-icon-left ml-auto">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            (input)="dt.filterGlobal($event.target.value, 'contains')"
+            placeholder="Search keyword"
+          />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="p-3 text-lg font-semibold">Company Logo</th>
+        <th pSortableColumn="company_name" class="p-3 text-lg font-semibold">
+          Company Name <p-sortIcon field="company_name"></p-sortIcon>
+        </th>
+        <th class="p-3 text-lg font-semibold">Company Type</th>
+        <th>View Detail</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-company>
+      <tr>
+        <td>
+          <img
+            width="100"
+            style="object-fit: cover"
+            [src]="company.company_logo"
+            [alt]="company.company_name + ' logo'"
+          />
+        </td>
+        <td class="font-normal text-xl">
+          {{ company.company_name | titlecase }}
+        </td>
+        <td>{{ company.company_type | titlecase }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            type="button"
+            label="View Detail"
+            class="p-button-raised p-button-success"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</section>
