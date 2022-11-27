@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { CompanyTableComponent } from './home/company-table/company-table.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { AdminComponent } from './admin/admin.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

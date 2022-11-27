@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { HeaderService } from './header.service';
 
 @Component({
@@ -11,13 +12,27 @@ import { HeaderService } from './header.service';
 export class HeaderComponent implements OnInit {
   openDialog = false;
   isLoading = false;
+  isLoggedIn = false;
 
-  constructor(private headerService: HeaderService, private router: Router) {}
+  constructor(
+    private headerService: HeaderService,
+    private router: Router,
+    private messageService: MessageService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.headerService.getAuthState().subscribe((res) => {
+      this.isLoggedIn = res;
+    });
+  }
 
   openAdminLoginDialog() {
     this.openDialog = true;
+  }
+
+  changeAuthState(value: boolean) {
+    this.router.navigate(['/']);
+    this.headerService.changeAuthState(value);
   }
 
   onFormSubmitted(form: NgForm) {
@@ -32,11 +47,21 @@ export class HeaderComponent implements OnInit {
     };
 
     this.headerService.adminLogin(auth).subscribe((res) => {
-      console.log(res);
       if (res.user != null) {
         this.openDialog = false;
+        this.headerService.changeAuthState(true);
         this.router.navigate([`admin/${res.user.id}`]);
+      } else {
+        this.headerService.changeAuthState(false);
+        this.openDialog = false;
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: res.message,
+        });
       }
+      this.isLoading = false;
+      form.reset();
     });
   }
 }
