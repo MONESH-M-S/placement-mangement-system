@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Table } from 'primeng/table';
 import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/http/http.service';
@@ -9,6 +9,7 @@ import { HttpService } from 'src/app/http/http.service';
   styleUrls: ['./company-table.component.scss'],
 })
 export class CompanyTableComponent implements OnInit {
+  @Input() isAdmin: boolean = false;
   company$: Observable<any> = new Observable<any>();
   companyArray: any[] = [];
   isLoading: boolean = false;

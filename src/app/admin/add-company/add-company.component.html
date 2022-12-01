@@ -1,0 +1,182 @@
+<div class="surface-50 my-3 px-6 py-3 border-round-2xl">
+  <form [formGroup]="companyForm">
+    <div class="grid -mr-3 -ml-3">
+      <div class="col-12 lg:col-8 p-4">
+        <div
+          class="surface-card grid formgrid p-fluid border-round shadow-2 p-4"
+        >
+          <div class="col-12 mb-4">
+            <div class="text-900 font-semibold text-xl">
+              Additional Information
+            </div>
+          </div>
+          <div class="col-12 field mb-0">
+            <label
+              for="company_description"
+              class="text-900 font-semibold mb-3"
+            >
+              Company Description
+            </label>
+            <p-editor
+              id="company_description"
+              [style]="{ height: '180px' }"
+              formControlName="company_description"
+            ></p-editor>
+          </div>
+          <p-divider class="w-full px-2"></p-divider>
+          <label class="text-900 font-semibold mb-3"> Alumni Details </label>
+          <div
+            formArrayName="alumni"
+            *ngFor="let alm of alumni.controls; index as i"
+          >
+            <div class="grid" [formGroupName]="i">
+              <div class="col-6 field">
+                <input
+                  class="w-full"
+                  type="text"
+                  placeholder="Alumni Name"
+                  formControlName="name"
+                  pInputText
+                />
+              </div>
+              <div class="col-6 field">
+                <input
+                  class="w-full"
+                  type="email"
+                  placeholder="Alumni Email"
+                  formControlName="email"
+                  pInputText
+                />
+              </div>
+              <div class="col-6 field">
+                <input
+                  class="w-full"
+                  type="number"
+                  placeholder="Mobile number"
+                  formControlName="phone"
+                  pInputText
+                />
+              </div>
+              <div class="col-4 field">
+                <input
+                  class="w-full"
+                  type="number"
+                  placeholder="Batch"
+                  formControlName="batch"
+                  pInputText
+                />
+              </div>
+              <div class="col-2">
+                <button
+                  pButton
+                  pRipple
+                  type="button"
+                  icon="pi pi-minus"
+                  class="p-button-rounded p-button-danger mr-2"
+                  styleClass="p-button-sm"
+                  [disabled]="i === 0"
+                  (click)="removeAlumni(i)"
+                ></button>
+                <button
+                  pButton
+                  pRipple
+                  type="button"
+                  icon="pi pi-plus"
+                  class="p-button-rounded"
+                  styleClass="p-button-sm"
+                  (click)="addAlumni()"
+                  [disabled]="alumni.invalid"
+                ></button>
+              </div>
+              <p-divider class="w-full px-2 my-2"></p-divider>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 lg:col-4 p-4">
+        <div class="surface-card border-round shadow-2 p-5">
+          <div class="fborder-bottom-1 pb-3 surface-border">
+            <span class="text-900 font-semibold text-lg lg:text-xl">
+              Company Details
+            </span>
+          </div>
+          <div
+            class="flex flex-column lg:flex-row flex-wrap lg:align-items-center py-2 mt-3 border-bottom-1 surface-border"
+          >
+            <img
+              [src]="imageDisplay"
+              class="w-8rem h-8rem flex-shrink-0 mb-3"
+            />
+            <div class="flex-auto lg:ml-3">
+              <div class="mb-3">
+                <span class="text-900 font-semibold">Upload Company Logo</span>
+              </div>
+              <p-fileUpload
+                #fubauto
+                mode="basic"
+                name="demo"
+                accept="image/*"
+                maxFileSize="2000000"
+                customUpload="true"
+                (uploadHandler)="onUpload($event)"
+                [auto]="true"
+                chooseLabel="Browser"
+              ></p-fileUpload>
+            </div>
+          </div>
+          <div class="py-2 mt-3 border-bottom-1 surface-border">
+            <div class="grid">
+              <div class="col-12">
+                <div class="field">
+                  <label for="companyName" class="font-semibold">
+                    Company Name
+                  </label>
+                  <input
+                    id="companyName"
+                    class="w-full"
+                    type="text"
+                    formControlName="company_name"
+                    pInputText
+                  />
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="field">
+                  <label for="companyName" class="font-semibold block">
+                    Company Type
+                  </label>
+                  <p-dropdown
+                    [options]="comapnyType"
+                    placeholder="Select Company Type"
+                    class="w-10"
+                    [showClear]="true"
+                    formControlName="company_type"
+                  ></p-dropdown>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            pButton
+            pRipple
+            type="button"
+            label="Submit"
+            class="w-full mt-3 p-button-raised p-button-success"
+            [disabled]="companyForm.invalid"
+            *ngIf="!isLoading"
+            (click)="onSubmit()"
+          ></button>
+          <div class="flex justify-content-center mt-3" *ngIf="isLoading">
+            <p-progressSpinner
+              [style]="{ width: '50px', height: '50px' }"
+              styleClass="custom-spinner"
+              strokeWidth="8"
+              fill="var(--surface-ground)"
+              animationDuration=".5s"
+            ></p-progressSpinner>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

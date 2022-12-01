@@ -5,6 +5,11 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ToastModule } from 'primeng/toast';
+import { DividerModule } from 'primeng/divider';
+import { DropdownModule } from 'primeng/dropdown';
+import { FileUploadModule } from 'primeng/fileupload';
+import { EditorModule } from 'primeng/editor';
+import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
   imports: [
@@ -14,6 +19,11 @@ import { ToastModule } from 'primeng/toast';
     DialogModule,
     ProgressSpinnerModule,
     ToastModule,
+    DividerModule,
+    DropdownModule,
+    FileUploadModule,
+    EditorModule,
+    AccordionModule,
   ],
   exports: [
     TableModule,
@@ -22,6 +32,11 @@ import { ToastModule } from 'primeng/toast';
     DialogModule,
     ProgressSpinnerModule,
     ToastModule,
+    DividerModule,
+    DropdownModule,
+    FileUploadModule,
+    EditorModule,
+    AccordionModule,
   ],
 })
 export class PrimengModule {}

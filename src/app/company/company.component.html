@@ -1,0 +1,34 @@
+<section>
+  <div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+    <div class="grid">
+      <div class="col-12 lg:col-6 p-4 flex flex-column">
+        <div class="text-900 font-bold text-3xl mt-2">
+          {{ companyData.company_name | uppercase }}
+        </div>
+        <p class="text-600 text-xl mt-3 mb-5 line-height-3">
+          {{ companyData.company_type | titlecase }}
+        </p>
+        <p-accordion
+          expandIcon="pi pi-fw pi-plus"
+          collapseIcon="pi pi-fw pi-minus"
+        >
+          <p-accordionTab header="Company Description">
+            <p>{{ companyData.company_description }}</p>
+          </p-accordionTab>
+          <p-accordionTab header="Alumni Details">
+            <ul class="list-none" *ngFor="let alumni of companyData.alumni_detail">
+              <li class="text-600 line-height-3 flex align-items-center mb-4">
+                <i class="pi pi-circle-fill mr-3" style="font-size: 7px"></i
+                >Vulputate eu scelerisque felis imperdiet proin. Eget arcu
+                dictum varius duis at consectetur lorem donec.
+              </li>
+            </ul>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div class="col-12 lg:col-6 p-4">
+        <img [src]="companyData.company_logo" class="w-full" alt="product" />
+      </div>
+    </div>
+  </div>
+</section>

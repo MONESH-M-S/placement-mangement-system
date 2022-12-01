@@ -2,9 +2,13 @@
   <div class="top_section flex justify-content-between">
     <h1>Hello, {{ userData.name | titlecase }}!</h1>
     <p-button
-      label="Add Admin"
+      label="Add New Company"
       icon="pi pi-plus"
       styleClass="p-button-raised p-button-success"
+      routerLink="add-company"
     ></p-button>
+  </div>
+  <div class="mt-5">
+    <app-company-table [isAdmin]="true"></app-company-table>
   </div>
 </section>

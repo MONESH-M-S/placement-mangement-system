@@ -12,6 +12,8 @@ import { CompanyTableComponent } from './home/company-table/company-table.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
 import { MessageService } from 'primeng/api';
+import { AddCompanyComponent } from './admin/add-company/add-company.component';
+import { CompanyComponent } from './company/company.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { MessageService } from 'primeng/api';
     HeaderComponent,
     CompanyTableComponent,
     AdminComponent,
+    AddCompanyComponent,
+    CompanyComponent,
   ],
   imports: [
     BrowserModule,
