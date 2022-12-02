@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/http/http.service';
@@ -13,7 +14,11 @@ export class CompanyTableComponent implements OnInit {
   company$: Observable<any> = new Observable<any>();
   companyArray: any[] = [];
   isLoading: boolean = false;
-  constructor(private httpService: HttpService) {}
+  constructor(
+    private httpService: HttpService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -29,5 +34,31 @@ export class CompanyTableComponent implements OnInit {
 
   clear(table: Table) {
     table.clear();
+  }
+
+  deleteConfirmPopup(event: Event, id: string) {
+    this.confirmationService.confirm({
+      target: event.target,
+      message: 'Are you sure that you want to Delete?',
+      accept: () => {
+        this.httpService.deleteCompany(id).subscribe((res) => {
+          if (res.success) {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: res.message,
+            });
+            this.httpService.getAllCoureses();
+          } else {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: res.message,
+            });
+          }
+        });
+      },
+      reject: () => {},
+    });
   }
 }

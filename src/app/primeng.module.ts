@@ -10,6 +10,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FileUploadModule } from 'primeng/fileupload';
 import { EditorModule } from 'primeng/editor';
 import { AccordionModule } from 'primeng/accordion';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { MessageService, ConfirmationService } from 'primeng/api';
 
 @NgModule({
   imports: [
@@ -24,6 +26,7 @@ import { AccordionModule } from 'primeng/accordion';
     FileUploadModule,
     EditorModule,
     AccordionModule,
+    ConfirmPopupModule,
   ],
   exports: [
     TableModule,
@@ -37,6 +40,8 @@ import { AccordionModule } from 'primeng/accordion';
     FileUploadModule,
     EditorModule,
     AccordionModule,
+    ConfirmPopupModule,
   ],
+  providers: [MessageService, ConfirmationService]
 })
 export class PrimengModule {}

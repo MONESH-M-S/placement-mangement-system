@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class HttpService {
   BACKEND_URL = environment.BACKEND_URL;
-  allCourses$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  allCompany$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
   constructor(private http: HttpClient) {}
 
   getAllCoureses() {
@@ -18,12 +18,18 @@ export class HttpService {
       )
       .subscribe((res) => {
         if (res.companies.length > 1) {
-          this.allCourses$.next(res.companies);
+          this.allCompany$.next(res.companies);
         }
       });
   }
 
   getUpdatedCourseList() {
-    return this.allCourses$.asObservable();
+    return this.allCompany$.asObservable();
+  }
+
+  deleteCompany(companyId: string) {
+    return this.http.delete<{ success: boolean; message: string }>(
+      `${this.BACKEND_URL}api/v1/company/${companyId}`
+    );
   }
 }

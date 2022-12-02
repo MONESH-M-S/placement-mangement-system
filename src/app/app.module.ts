@@ -34,7 +34,7 @@ import { CompanyComponent } from './company/company.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [MessageService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

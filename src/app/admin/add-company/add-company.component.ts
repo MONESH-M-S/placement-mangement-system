@@ -24,7 +24,7 @@ export class AddCompanyComponent implements OnInit {
 
   onUpload(event: any) {
     const file = event.files[0];
-    this.companyForm.patchValue({ comapny_logo: file });
+    this.companyForm.patchValue({ company_logo: file });
     this.companyForm.get('company_logo').updateValueAndValidity();
     const reader = new FileReader();
     reader.onload = () => {
@@ -64,31 +64,28 @@ export class AddCompanyComponent implements OnInit {
     const companyFormValue = new FormData();
     companyFormValue.append(
       'company_name',
-      this.companyForm.get('company_name').value
+      this.companyForm.value.company_name
     );
     companyFormValue.append(
       'company_description',
-      this.companyForm.get('company_description').value
+      this.companyForm.value.company_description
     );
     companyFormValue.append(
       'company_type',
-      this.companyForm.get('company_type').value
+      this.companyForm.value.company_type
     );
+    companyFormValue.append('image', this.companyForm.value.company_logo);
     companyFormValue.append(
-      'company_logo',
-      this.companyForm.get('company_logo').value
+      'alumni',
+      JSON.stringify(this.companyForm.value.alumni)
     );
-    companyFormValue.append('alumni', this.companyForm.get('alumni').value);
 
-    this.adminService.addNewCompany(companyFormValue).subscribe(
-      (res) => {
-        console.log(res);
-        this.isLoading = false;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    console.log(companyFormValue);
+
+    this.adminService.addNewCompany(companyFormValue).subscribe((res) => {
+      console.log(res);
+      this.isLoading = false;
+    });
   }
 
   private _initForm() {
