@@ -11,6 +11,7 @@ import { HttpService } from 'src/app/http/http.service';
 })
 export class CompanyTableComponent implements OnInit {
   @Input() isAdmin: boolean = false;
+  @Input() adminID: string = '';
   company$: Observable<any> = new Observable<any>();
   companyArray: any[] = [];
   isLoading: boolean = false;

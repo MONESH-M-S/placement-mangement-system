@@ -15,4 +15,11 @@ export class AdminService {
       company
     );
   }
+
+  updateFormValue(company: any, id: string) {
+    return this.http.put<{ company: any; message: string }>(
+      `${this.BACKEND_URL}api/v1/company/${id}`,
+      company
+    );
+  }
 }

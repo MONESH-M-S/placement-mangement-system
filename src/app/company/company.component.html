@@ -13,14 +13,26 @@
           collapseIcon="pi pi-fw pi-minus"
         >
           <p-accordionTab header="Company Description">
-            <p>{{ companyData.company_description }}</p>
+            <div [innerHTML]="companyData.company_description"></div>
           </p-accordionTab>
           <p-accordionTab header="Alumni Details">
-            <ul class="list-none" *ngFor="let alumni of companyData.alumni_detail">
-              <li class="text-600 line-height-3 flex align-items-center mb-4">
-                <i class="pi pi-circle-fill mr-3" style="font-size: 7px"></i
-                >Vulputate eu scelerisque felis imperdiet proin. Eget arcu
-                dictum varius duis at consectetur lorem donec.
+            <ul
+              class="list-none"
+              *ngFor="let alumni of companyData.alumni_detail"
+            >
+              <li
+                class="text-600 line-height-3 flex flex-column mb-2"
+              >
+                <div>
+                  <p class="font-semibold text-xl m-0">
+                    <i class="pi pi-user mr-3"></i>
+                    {{ alumni.name }} ( {{ alumni.batch }} Batch )
+                  </p>
+                </div>
+                <div>
+                  <p class="font-normal">{{ alumni.email }}</p>
+                  <p class="font-normal">{{ alumni.phone }}</p>
+                </div>
               </li>
             </ul>
           </p-accordionTab>

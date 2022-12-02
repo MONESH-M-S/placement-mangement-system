@@ -15,8 +15,6 @@ export class CompanyResolver implements Resolve<any> {
   BACKEND_URL = environment.BACKEND_URL;
   constructor(private http: HttpClient, private router: Router) {}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-    console.log(route);
-    
     if (route.params['id']) {
       return this.http.get<{ user: any; message: string }>(
         `${this.BACKEND_URL}api/v1/company/${route.params.id}`

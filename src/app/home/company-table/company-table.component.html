@@ -71,6 +71,8 @@
             label="Edit"
             icon="pi pi-pencil"
             class="p-button-raised p-button-success mr-2"
+            [routerLink]="'/c/' + company.id + '/edit'"
+            [queryParams]="{ edit: true }"
           ></button>
           <button
             pButton

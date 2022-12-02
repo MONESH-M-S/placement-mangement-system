@@ -14,11 +14,16 @@ const routes: Routes = [
     path: 'admin/:id',
     component: AdminComponent,
     resolve: { adminData: AdminResolver },
-    canActivate: [AdminGuard],
+    //canActivate: [AdminGuard],
   },
   {
     path: 'admin/:id/add-company',
     component: AddCompanyComponent,
+  },
+  {
+    path: 'c/:id/edit',
+    component: AddCompanyComponent,
+    resolve: { companyData: CompanyResolver },
   },
   {
     path: 'company/:id',
