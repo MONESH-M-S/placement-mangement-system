@@ -65,7 +65,7 @@ export class AddCompanyComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       name: ['', Validators.required],
       batch: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: [''],
     });
   }
 

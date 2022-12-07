@@ -1,13 +1,20 @@
 <section>
   <div class="surface-section px-4 py-8 md:px-6 lg:px-8">
     <div class="grid">
-      <div class="col-12 lg:col-6 p-4 flex flex-column">
+      <div class="col-12 p-4 flex flex-column">
+        <div class="flex justify-content-between">
+          <div>
         <div class="text-900 font-bold text-3xl mt-2">
           {{ companyData.company_name | uppercase }}
         </div>
         <p class="text-600 text-xl mt-3 mb-5 line-height-3">
           {{ companyData.company_type | titlecase }}
         </p>
+        </div>
+        <div>
+        <img [src]="companyData.company_logo" class="w-full" alt="product" />
+        </div>
+        </div>
         <p-accordion
           expandIcon="pi pi-fw pi-plus"
           collapseIcon="pi pi-fw pi-minus"
@@ -37,9 +44,6 @@
             </ul>
           </p-accordionTab>
         </p-accordion>
-      </div>
-      <div class="col-12 lg:col-6 p-4">
-        <img [src]="companyData.company_logo" class="w-full" alt="product" />
       </div>
     </div>
   </div>

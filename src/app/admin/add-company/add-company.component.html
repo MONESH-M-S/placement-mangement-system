@@ -120,8 +120,8 @@
                 customUpload="true"
                 (uploadHandler)="onUpload($event)"
                 [auto]="true"
-                chooseLabel="Browser"
-                *ngIf="editMode"
+                chooseLabel="Browse"
+                *ngIf="!editMode"
               ></p-fileUpload>
             </div>
           </div>
