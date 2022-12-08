@@ -151,6 +151,10 @@ export class AddCompanyComponent implements OnInit {
     }
   }
 
+  goBack(): void {
+    this.location.back();
+  }
+
   private _initForm() {
     this.companyForm = this.formBuilder.group({
       company_name: ['', Validators.required],

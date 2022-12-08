@@ -1,4 +1,13 @@
 <div class="surface-50 my-3 px-6 py-3 border-round-2xl">
+  <button
+    pButton
+    pRipple
+    type="button"
+    icon="pi pi-caret-left"
+    label="Back"
+    class="p-button-rounded p-button-text p-button-danger"
+    (click)="goBack()"
+  ></button>
   <form [formGroup]="companyForm">
     <div class="grid -mr-3 -ml-3">
       <div class="col-12 lg:col-8 p-4">

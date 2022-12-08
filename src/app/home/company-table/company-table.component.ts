@@ -15,6 +15,7 @@ export class CompanyTableComponent implements OnInit {
   company$: Observable<any> = new Observable<any>();
   companyArray: any[] = [];
   isLoading: boolean = false;
+  companyType = ['Software', 'Core'];
   constructor(
     private httpService: HttpService,
     private confirmationService: ConfirmationService,
@@ -26,10 +27,8 @@ export class CompanyTableComponent implements OnInit {
     this.httpService.getAllCoureses();
     this.company$ = this.httpService.getUpdatedCourseList();
     this.company$.subscribe((res) => {
-      setTimeout(() => {
-        this.companyArray = res;
-        this.isLoading = false;
-      }, 1000);
+      this.companyArray = res;
+      this.isLoading = false;
     });
   }
 

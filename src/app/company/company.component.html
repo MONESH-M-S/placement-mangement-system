@@ -2,7 +2,7 @@
   <div class="surface-section px-4 py-8 md:px-6 lg:px-8">
     <div class="grid">
       <div class="col-12 p-4 flex flex-column">
-        <div class="flex justify-content-between">
+        <div class="flex justify-content-between align-items-center">
           <div>
         <div class="text-900 font-bold text-3xl mt-2">
           {{ companyData.company_name | uppercase }}
@@ -18,6 +18,7 @@
         <p-accordion
           expandIcon="pi pi-fw pi-plus"
           collapseIcon="pi pi-fw pi-minus"
+          [multiple]="true"
         >
           <p-accordionTab header="Company Description">
             <div [innerHTML]="companyData.company_description"></div>
