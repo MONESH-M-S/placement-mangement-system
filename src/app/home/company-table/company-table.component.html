@@ -32,33 +32,9 @@
         <th pSortableColumn="company_name" class="p-3 text-lg font-semibold">
           Company Name <p-sortIcon field="company_name"></p-sortIcon>
         </th>
-        <th class="p-3 text-lg font-semibold">
+        <th pSortableColumn="company_type" class="p-3 text-lg font-semibold">
           Company Type
-          <p-columnFilter
-            field="company_type"
-            matchMode="in"
-            display="menu"
-            [showMatchModes]="false"
-            [showOperator]="false"
-            [showAddButton]="false"
-          >
-            <ng-template
-              pTemplate="filter"
-              let-value
-              let-filter="filterCallback"
-            >
-              <p-multiSelect
-                [ngModel]="value"
-                [options]="companyType"
-                placeholder="Any"
-                (onChange)="filter($event.value)"
-              >
-                <ng-template let-option pTemplate="item">
-                  <span class="ml-1">{{ option }}</span>
-                </ng-template>
-              </p-multiSelect>
-            </ng-template>
-          </p-columnFilter>
+          <p-sortIcon field="company_type"></p-sortIcon>
         </th>
         <th *ngIf="!isAdmin">View Detail</th>
         <th *ngIf="isAdmin">Action</th>
