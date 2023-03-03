@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-auto-rows: 62px auto;
+  grid-auto-rows: 68px auto;
   grid-template-areas:
     "header"
     "body";
@@ -14,14 +14,8 @@
 }
 
 .body {
-  margin-top: 80px;
   grid-area: body;
   width: 100%;
   height: 100%;
   background-color: #e6e6ff;
-
-  .content {
-    width: 85%;
-    margin: auto;
-  }
 }

@@ -7,21 +7,19 @@
     #dt
     [value]="companyArray"
     styleClass="p-datatable-lg p-datatable-gridlines"
-    [tableStyle]="{ 'min-width': '50rem' }"
     [scrollable]="true"
     [globalFilterFields]="['company_name', 'company_type']"
     scrollHeight="600px"
   >
     <ng-template pTemplate="caption">
-      <div class="flex">
-        <div></div>
+      <div class="flex justify-content-end">
         <span class="p-input-icon-left ml-auto">
           <i class="pi pi-search"></i>
           <input
             pInputText
             type="text"
             (input)="dt.filterGlobal($event.target.value, 'contains')"
-            placeholder="Search keyword"
+            placeholder="Search Company"
           />
         </span>
       </div>
